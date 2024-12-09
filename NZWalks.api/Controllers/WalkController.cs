@@ -10,7 +10,7 @@ namespace NZWalks.api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize]
+    //[Authorize]
 
     public class WalkController : ControllerBase
     {
@@ -24,7 +24,7 @@ namespace NZWalks.api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<Walk>> GetWalkAsync(int Id)
+        public async Task<ActionResult<GetWalkDTO>> GetWalkAsync(int Id)
         {
             Walk walk = await _service.GetWalkAsync(Id);
 
@@ -32,7 +32,10 @@ namespace NZWalks.api.Controllers
             {
                 return NotFound("Does not exist.");
             }
-            return Ok(walk);
+
+            GetWalkDTO dto = _mapper.Map<GetWalkDTO>(walk);
+
+            return Ok(dto);
         }
 
         [HttpGet]

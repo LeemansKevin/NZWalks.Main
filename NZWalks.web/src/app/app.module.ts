@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello/hello.component';
 import { WalkDetailComponent } from './walk-detail/walk-detail.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { RegionDetailComponent } from './region-detail/region-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HelloComponent,
-    WalkDetailComponent
+    WalkDetailComponent,
+    RegionDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -23,7 +23,7 @@ export class WalkDetailComponent {
     this.walkService.getWalk(1).subscribe({
       next: (data) => {
         (this.dto = data)
-        debugger
+        
       },
       error: (error) => {
         console.error(error)

@@ -38,7 +38,19 @@ builder.Services.AddScoped<WalkService, WalkService>();
 builder.Services.AddScoped<IRegionRepo, RegionRepository>();
 builder.Services.AddScoped<RegionService, RegionService>();
 
+// Enable CORS for all origins or specific origins
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy => policy
+            .AllowAnyOrigin() // Or use .WithOrigins("http://localhost:4200") for local development
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+
 var app = builder.Build();
+
+app.UseCors("AllowAll");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
