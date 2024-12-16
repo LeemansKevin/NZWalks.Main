@@ -94,12 +94,20 @@ namespace NZWalks.api.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult AddWalk(AddWalkDTO walk)
         {
             Walk model = null;
-            model = _mapper.Map(walk, model);
-            _service.AddWalkAsync(model);
-            return Created();
+            if (ModelState.IsValid)
+            {
+                model = _mapper.Map(walk, model);
+                _service.AddWalkAsync(model);
+                return Created();
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
         }
 
         [HttpDelete]

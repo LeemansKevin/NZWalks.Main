@@ -1,5 +1,7 @@
+<button (click)="addWalk()">Voeg wandeling toe</button>
 <div *ngFor="let dto of dtos">
     <app-walk-detail [dto]=dto>
     </app-walk-detail>
+    <a [routerLink]="['/walk', dto.id]">Go to Walk</a>
     <hr/>
 </div>

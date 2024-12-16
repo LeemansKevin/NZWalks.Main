@@ -7,12 +7,12 @@ import { GetRegionWithWalksDTO } from '../models/getRegionWithWalksDTO';
   providedIn: 'root'
 })
 export class RegionService {
-    apiUrl:string = 'https://localhost:7207/Region/GetRegion?Id=1&includeWalks=true'
+    apiUrl:string = `https://localhost:7207/Region`
 
     constructor(private httpClient:HttpClient) { }
 
-    getRegionWithWalks():Observable<GetRegionWithWalksDTO>{
+    getRegionWithWalks(id:number):Observable<GetRegionWithWalksDTO>{
 
-        return this.httpClient.get<GetRegionWithWalksDTO>(`${this.apiUrl}`)
+        return this.httpClient.get<GetRegionWithWalksDTO>(`${this.apiUrl}/GetRegion?Id=${id}&includeWalks=true`)
     }
 }
