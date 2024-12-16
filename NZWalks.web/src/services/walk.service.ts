@@ -14,7 +14,12 @@ export class WalkService {
   
   getWalk(id:number):Observable<GetWalkDTO>{
 
-    return this.httpClient.get<GetWalkDTO>(`${this.apiUrl}/?Id=${id}`)
+    return this.httpClient.get<GetWalkDTO>(`${this.apiUrl}?Id=${id}`)
+  }
+
+  getWalks():Observable<GetWalkDTO[]> {
+
+    return this.httpClient.get<GetWalkDTO[]>(`${this.apiUrl}/GetAllWalks`)
   }
 
 }

@@ -1,2 +1,9 @@
-<p>walk-detail works!</p>
-<p>naam:{{ dto?.walkName}}</p>
+<div *ngIf="dto; else noData" >
+  <p>naam:{{ dto.walkName }}</p>
+  <p>foto:{{ dto.pictureURL }}</p>
+  <p>altitude:{{ dto.altitude }}</p>
+</div>
+
+<ng-template #noData>
+    <p>Geen wandeling gevonden.</p>
+</ng-template>
